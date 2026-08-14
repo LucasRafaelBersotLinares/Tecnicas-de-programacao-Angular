@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { delay } from 'rxjs';
+
 
 @Component({
   selector: 'app-header',
@@ -8,19 +9,14 @@ import { delay } from 'rxjs';
   styleUrl: './header.css',
 })
 export class Header {
-  texto2: String;
+  titulo = input.required<string>()
+  textoSobre = output<string>()
 
-  constructor(){
-    this.texto2 = "dois";
-    this.lua();
+  enviarSobre(): void {
+    this.textoSobre.emit('Técnicas de programação I. \n Desenvolvido por Lucas Rafael')
   }
 
-
-  lua(){
-    for (let index = 0; index < 10; index++) {
-        this.texto2 = String(index);
-        delay(1000000);
-    }
+  exibirMensagem(msg: string): void{
+    alert(msg);
   }
-
 }
