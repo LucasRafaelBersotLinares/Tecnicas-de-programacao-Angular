@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, output } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Header } from './core/header/header';
 import { Footer } from './core/footer/footer';
@@ -14,14 +14,14 @@ export class App {
   protected readonly title = signal('LOJA TP1 APP');
 
   sobre?: string;
-  produto = false
+  produto = signal(false)
 
   receberSobre(msg: string): void {
     this.sobre = msg
   }
 
-  criarProduto(){
-    this.produto = true;
-    return true
+  adicionaCard(){
+    this.produto.set(true)
   }
+
 }

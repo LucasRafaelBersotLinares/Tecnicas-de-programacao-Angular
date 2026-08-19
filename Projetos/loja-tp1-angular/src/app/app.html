@@ -2,9 +2,8 @@
 <main class="container">
   <h2>Angular - Aula 02</h2>
   <p>{{ sobre }}</p>
-  <button (click)="criarProduto">Criar Card Produto.</button>
-
-  @if (criarProduto) {
+  <button (click)="adicionaCard()">Criar Card Produto.</button>
+  @if (produto()) {
     <app-card-produto></app-card-produto>
   }
 </main>
