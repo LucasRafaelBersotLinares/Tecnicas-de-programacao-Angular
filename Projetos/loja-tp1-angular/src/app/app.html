@@ -2,6 +2,9 @@
 <main class="container">
   <h2>Angular - Aula 02</h2>
   <p>{{ sobre }}</p>
+
+  <app-card-produto-v2 [produto]="this.produto2"></app-card-produto-v2>
+
   <button (click)="adicionaCard()">Criar Card Produto.</button>
   @if (produto()) {
     <app-card-produto></app-card-produto>
