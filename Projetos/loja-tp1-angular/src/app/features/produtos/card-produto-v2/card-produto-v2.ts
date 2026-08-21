@@ -1,10 +1,11 @@
 import { Component, input, output, signal } from '@angular/core';
 import { Produto } from '../../../model/produto';
 import { QuantidadeControle } from "../../../shared/quantidade-controle/quantidade-controle";
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-card-produto-v2',
-  imports: [QuantidadeControle],
+  imports: [QuantidadeControle, CurrencyPipe],
   templateUrl: './card-produto-v2.html',
   styleUrl: './card-produto-v2.css',
 })
@@ -21,7 +22,7 @@ export class CardProdutoV2 {
   }
 
   onView(){
-    this.view.emit;
+    this.view.emit(this.produto().id);
   }
 
 

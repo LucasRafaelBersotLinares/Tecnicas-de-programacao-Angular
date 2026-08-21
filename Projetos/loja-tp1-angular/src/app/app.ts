@@ -6,9 +6,10 @@ import { QuantidadeControle } from "./shared/quantidade-controle/quantidade-cont
 import { CardProduto } from "./features/produtos/card-produto/card-produto";
 import { Produto } from './model/produto';
 import { CardProdutoV2 } from "./features/produtos/card-produto-v2/card-produto-v2";
+import { ListaProdutos } from "./features/produtos/lista-produtos/lista-produtos";
 @Component({
   selector: 'app-root',
-  imports: [CardProduto, RouterOutlet, Header, Footer, QuantidadeControle, CardProdutoV2],
+  imports: [CardProduto, RouterOutlet, Header, Footer, QuantidadeControle, CardProdutoV2, ListaProdutos],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -16,14 +17,6 @@ export class App {
   protected readonly title = signal('LOJA TP1 APP');
   sobre?: string;
   produto = signal(false)
-  produto2 = <Produto>{
-    id: 1,
-    nome: 'Mounjaro',
-    preco: 1699.99,
-    descricao: 'Canetas cara demais. Deus me livre.',
-    imageUrl: 'images/produtos/mounjaro.jpg',
-    promo: false
-  };
 
   receberSobre(msg: string): void {
     this.sobre = msg

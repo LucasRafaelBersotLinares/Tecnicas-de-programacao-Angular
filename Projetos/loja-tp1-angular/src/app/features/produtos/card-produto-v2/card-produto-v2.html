@@ -1,11 +1,11 @@
-<article class="card">
+<article class="card" [class.promo]="produto().promo">
     <img class="thumb" [src]="this.produto().imageUrl">
     <div class="conteudo">
         <h3 class="titulo">{{ this.produto().nome }}</h3>
         <p class="desc">{{ this.produto().descricao}}</p>
 
         <div class="linhapreco">
-            <span class="preco">{{ produto().preco}}</span>
+            <span class="preco">{{ produto().preco | currency: 'BRL'}}</span>
             <app-quantidade-controle [(contador)]="quantidade"></app-quantidade-controle>
         </div>
 
