@@ -1,19 +1,18 @@
 import { Component } from '@angular/core';
 import { Produto } from '../../../model/produto';
-import { CardProduto } from "../card-produto/card-produto";
 import { CardProdutoV2 } from "../card-produto-v2/card-produto-v2";
 
 
 
 @Component({
   selector: 'app-lista-produtos',
-  imports: [CardProduto, CardProdutoV2],
+  imports: [CardProdutoV2],
   templateUrl: './lista-produtos.html',
   styleUrl: './lista-produtos.css',
 })
 export class ListaProdutos {
 
-  produto = <Produto[]>[
+  produtos = <Produto[]>[
     {
       id: 1,
       nome: 'Mounjaro',
@@ -41,6 +40,22 @@ export class ListaProdutos {
     {
       id: 4,
       nome: 'Walter White',
+      preco: 10000.0,
+      descricao: 'SAY MY NAMEEE!!!',
+      imageUrl: 'images/produtos/walter.jpg',
+      promo: false
+    },
+    {
+      id: 5,
+      nome: 'Walte White',
+      preco: 10000.0,
+      descricao: 'SAY MY NAMEEE!!!',
+      imageUrl: 'images/produtos/walter.jpg',
+      promo: false
+    },
+    {
+      id: 6,
+      nome: 'Walte White',
       preco: 10000.0,
       descricao: 'SAY MY NAMEEE!!!',
       imageUrl: 'images/produtos/walter.jpg',

@@ -1,9 +1,8 @@
 <section class="catalogo">
     <h2>Produtos</h2>
     <div class="grid">
-        <app-card-produto-v2 [produto]="produto[0]" (view)="onViewProduct($event)" (add)="onAddProduct($event)"></app-card-produto-v2>
-        <app-card-produto-v2 [produto]="produto[1]" (view)="onViewProduct($event)" (add)="onAddProduct($event)"></app-card-produto-v2>
-        <app-card-produto-v2 [produto]="produto[2]" (view)="onViewProduct($event)" (add)="onAddProduct($event)"></app-card-produto-v2>
-        <app-card-produto-v2 [produto]="produto[3]" (view)="onViewProduct($event)" (add)="onAddProduct($event)"></app-card-produto-v2>
+        @for (product of produtos; track product.id-1) {
+            <app-card-produto-v2 [produto]="product" (view)="onViewProduct($event)" (add)="onAddProduct($event)"></app-card-produto-v2>
+        }
     </div>
 </section>
