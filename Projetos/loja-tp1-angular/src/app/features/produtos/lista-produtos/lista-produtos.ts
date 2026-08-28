@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { Produto } from '../../../model/produto';
 import { CardProdutoV2 } from "../card-produto-v2/card-produto-v2";
 
@@ -12,6 +12,14 @@ import { CardProdutoV2 } from "../card-produto-v2/card-produto-v2";
 })
 export class ListaProdutos {
 
+  apenasPromo = signal(false);
+
+  produtosExibidos = computed(() => this.apenasPromo() ? this.produtos.filter(p => p.promo) : this.produtos)
+
+  alternarPromo(){
+    this.apenasPromo.update(v => !v)
+  }
+
   produtos = <Produto[]>[
     {
       id: 1,
@@ -19,7 +27,8 @@ export class ListaProdutos {
       preco: 1699.9,
       descricao: 'Canetas cara demais. Deus me livre.',
       imageUrl: 'images/produtos/mounjaro.jpg',
-      promo: false
+      promo: false,
+      estado: 'novo'
     },
     {
       id: 2,
@@ -27,7 +36,8 @@ export class ListaProdutos {
       preco: 4000.0,
       descricao: 'Melhor cocaina do mundo, algum card desses tem a resposta...',
       imageUrl: 'images/produtos/cocaina.jpg',
-      promo: true
+      promo: true,
+      estado: 'novo',
     },
     {
       id: 3,
@@ -35,7 +45,8 @@ export class ListaProdutos {
       preco: 1299.9,
       descricao: 'Caneta BUCHAA QUERO GORZAR',
       imageUrl: 'images/produtos/ozempic.jpg',
-      promo: true
+      promo: true,
+      estado: 'usado'
     },
     {
       id: 4,
@@ -43,24 +54,9 @@ export class ListaProdutos {
       preco: 10000.0,
       descricao: 'SAY MY NAMEEE!!!',
       imageUrl: 'images/produtos/walter.jpg',
-      promo: false
+      promo: false,
+      estado: 'esgotado'
     },
-    {
-      id: 5,
-      nome: 'Walte White',
-      preco: 10000.0,
-      descricao: 'SAY MY NAMEEE!!!',
-      imageUrl: 'images/produtos/walter.jpg',
-      promo: false
-    },
-    {
-      id: 6,
-      nome: 'Walte White',
-      preco: 10000.0,
-      descricao: 'SAY MY NAMEEE!!!',
-      imageUrl: 'images/produtos/walter.jpg',
-      promo: false
-    }
   ];
 
   onViewProduct(id: number){
