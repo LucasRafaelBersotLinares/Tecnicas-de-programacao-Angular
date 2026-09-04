@@ -50,7 +50,7 @@ export class ProdutoService {
 
   listar(): Observable<Produto[]> {
     this.logger.info("Retornando lista de produtos cadastrados.");
-    return of(this.listaMock).pipe(delay(250))
+    return of(this.listaMock).pipe(delay(1000))
   }
 
 }
