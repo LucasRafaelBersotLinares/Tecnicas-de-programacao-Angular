@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { Produto } from '../../../model/produto';
 import { CardProdutoV2 } from "../card-produto-v2/card-produto-v2";
-
-
+import { ProdutoService } from '../services/produto.service';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-lista-produtos',
@@ -12,56 +12,17 @@ import { CardProdutoV2 } from "../card-produto-v2/card-produto-v2";
 })
 export class ListaProdutos {
 
-  produtos = <Produto[]>[
-    {
-      id: 1,
-      nome: 'Mounjaro',
-      preco: 1699.9,
-      descricao: 'Canetas cara demais. Deus me livre.',
-      imageUrl: 'images/produtos/mounjaro.jpg',
-      promo: false
-    },
-    {
-      id: 2,
-      nome: 'Cocaina',
-      preco: 4000.0,
-      descricao: 'Melhor cocaina do mundo, algum card desses tem a resposta...',
-      imageUrl: 'images/produtos/cocaina.jpg',
-      promo: true
-    },
-    {
-      id: 3,
-      nome: 'Ozempic',
-      preco: 1299.9,
-      descricao: 'Caneta BUCHAA QUERO GORZAR',
-      imageUrl: 'images/produtos/ozempic.jpg',
-      promo: true
-    },
-    {
-      id: 4,
-      nome: 'Walter White',
-      preco: 10000.0,
-      descricao: 'SAY MY NAMEEE!!!',
-      imageUrl: 'images/produtos/walter.jpg',
-      promo: false
-    },
-    {
-      id: 5,
-      nome: 'Walte White',
-      preco: 10000.0,
-      descricao: 'SAY MY NAMEEE!!!',
-      imageUrl: 'images/produtos/walter.jpg',
-      promo: false
-    },
-    {
-      id: 6,
-      nome: 'Walte White',
-      preco: 10000.0,
-      descricao: 'SAY MY NAMEEE!!!',
-      imageUrl: 'images/produtos/walter.jpg',
-      promo: false
-    }
-  ];
+  private produtoService = inject(ProdutoService)
+
+  private produtos = toSignal<Produto[],Produto[]>(this.produtoService.listar(),{initialValue: []});
+
+  apenasPromo = signal(false);
+
+  produtosExibidos = computed(() => this.apenasPromo() ? this.produtos().filter(p => p.promo) : this.produtos())
+
+  alternarPromo(){
+    this.apenasPromo.update(v => !v)
+  }
 
   onViewProduct(id: number){
     alert(`Visualizando o Produto id: ${id}`)

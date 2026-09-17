@@ -18,6 +18,8 @@ export class App {
   sobre?: string;
   produto = signal(false)
 
+  x = signal(11)
+
   receberSobre(msg: string): void {
     this.sobre = msg
   }
