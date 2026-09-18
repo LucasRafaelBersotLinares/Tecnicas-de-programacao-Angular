@@ -5,12 +5,12 @@ import { Pipe, PipeTransform } from '@angular/core';
   pure: true
 })
 export class DescontoPipe implements PipeTransform {
-  transform(valor: number | undefined | null, percentual=0): number {
+  transform(valor: number | undefined | null,  percentual=0): number {
     if(typeof valor != 'number' || isNaN(valor)){
-      return 0
+      return 0;
     }
     const percFinal = Math.min(Math.max(percentual,0), 100);
-    return Math.round(valor * (1-percFinal/100));
-
+    return Math.round(1-percFinal/100);
+   
   }
 }
