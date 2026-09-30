@@ -1,31 +1,26 @@
-import { Component, signal, output } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Header } from './core/header/header';
 import { Footer } from './core/footer/footer';
-import { QuantidadeControle } from "./shared/quantidade-controle/quantidade-controle";
-import { CardProduto } from "./features/produtos/card-produto/card-produto";
+import { QuantidadeControle } from './shared/quantidade-controle/quantidade-controle';
 import { Produto } from './model/produto';
-import { CardProdutoV2 } from "./features/produtos/card-produto-v2/card-produto-v2";
+import { CardProduto } from "./features/produtos/card-produto/card-produto";
 import { ListaProdutos } from "./features/produtos/lista-produtos/lista-produtos";
+
 @Component({
   selector: 'app-root',
-  imports: [CardProduto, RouterOutlet, Header, Footer, QuantidadeControle, CardProdutoV2, ListaProdutos],
+  imports: [RouterOutlet, Header, Footer],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('LOJA TP1 APP');
+  protected readonly title = signal('loja-tp1-angular');
+
   sobre?: string;
-  produto = signal(false)
 
-  x = signal(11)
+  x = signal(10);
 
-  receberSobre(msg: string): void {
-    this.sobre = msg
+  receberSobre(texto: string){
+    this.sobre = texto;
   }
-
-  adicionaCard(){
-    this.produto.set(true)
-  }
-
 }

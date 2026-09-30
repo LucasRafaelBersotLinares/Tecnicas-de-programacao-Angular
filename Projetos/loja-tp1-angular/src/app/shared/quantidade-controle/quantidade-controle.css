@@ -2,26 +2,16 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    border-radius: 6px;
+    border: 1px solid #ddd;
     padding: 6px 10px;
-
+    border-radius: 6px;
+    
 }
-
 .contador button {
+    color: #fff;
+    cursor: pointer;
     border: none;
     background: #2f9e41;
-    color: white;
     padding: 6px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.contador button:hover {
-    opacity: .9;
-}
-
-.valor {
-    min-width: 24px;
-    text-align: center;
-    font-weight: bold;
+    border-radius: 6px;
 }

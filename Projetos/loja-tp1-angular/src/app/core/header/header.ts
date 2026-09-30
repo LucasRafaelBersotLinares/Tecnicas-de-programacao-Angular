@@ -1,22 +1,23 @@
+import { CommonModule } from '@angular/common';
 import { Component, input, output } from '@angular/core';
-import { delay } from 'rxjs';
-
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-header',
-  imports: [],
+  imports: [RouterLink, CommonModule],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
 export class Header {
-  titulo = input.required<string>()
-  textoSobre = output<string>()
+  tituloLoja= input.required<string>();
 
-  enviarSobre(): void {
-    this.textoSobre.emit('Técnicas de programação I. \n Desenvolvido por Lucas Rafael')
+  exibirMsg(msg:string): void {
+    alert(msg);
   }
 
-  exibirMensagem(msg: string): void{
-    alert(msg);
+  textoSobre = output<string>();
+
+  enviarSobre() {
+    this.textoSobre.emit('Disciplina de Técnicas de Programação  \n I. Desenvolvido por Rafis');
   }
 }

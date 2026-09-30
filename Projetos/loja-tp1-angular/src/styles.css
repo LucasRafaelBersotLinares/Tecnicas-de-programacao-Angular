@@ -1,20 +1,13 @@
-.container {
-    margin: 20px auto;
-    max-width: 800px;
-    font-family: Arial, sans-serif;
-    text-align: center;
-}
-
-h2 {
-    color: #2f9e41;
+html, body {
+    height: 100%;
+    margin: 0;
 }
 
 body {
-    margin: 0px;
     display: flex;
     flex-direction: column;
+    min-width: 100vh;
+    background: #f9fafb;
+    font-family: Arial, sans-serif;
 }
 
-html {
-    margin: 0px;
-}
