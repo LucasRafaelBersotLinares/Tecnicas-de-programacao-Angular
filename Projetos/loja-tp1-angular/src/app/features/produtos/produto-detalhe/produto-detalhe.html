@@ -3,7 +3,7 @@
         <p>Caregando...</p>
     }
     @else {
-        @if(produto()){
+        @if(!produto()){
             <p>Produto Não encontrado!</p>
             <button class="btn ghost" (click)="voltar()">Voltar</button>
         }

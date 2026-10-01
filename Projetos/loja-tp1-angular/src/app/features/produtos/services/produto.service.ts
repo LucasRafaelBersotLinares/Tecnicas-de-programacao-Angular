@@ -25,8 +25,17 @@ export class ProdutoService {
   }
 
   getById(id: number): Observable<Produto | undefined>{
-    return of();
-       
+    if (!Number.isInteger(id) || id <= 0) {
+      return of(undefined);
+    }
+
+    return this.http.get<any>(`${this.apiUrl}/${id}`).pipe(
+      map(produto => ProductMapper.fromJson(produto)),
+      catchError(erro => {
+        this.logger.error(`[PRODUTO SERVICE] - Erro ao buscar produto ${id}`);
+        return of(undefined);
+      })
+    );
   }
 
   criar(produto: Produto): Observable<any> {
