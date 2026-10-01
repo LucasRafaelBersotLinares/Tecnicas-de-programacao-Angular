@@ -38,6 +38,7 @@ export class ProdutoService {
     );
   }
 
+
   criar(produto: Produto): Observable<any> {
     return this.http.post(this.apiUrl,ProductMapper.toJson(produto));
   }

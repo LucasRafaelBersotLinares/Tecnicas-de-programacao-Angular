@@ -23,6 +23,15 @@
     margin-bottom: 12px;
   }
   
+  .btn.primary{
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: grab;
+    background: #1f9e41;
+    color:#fff;
+    border: 1px solid #e5e7eb;
+  }
+
   .btn.sopromo {
     border: 1px solid #e5e7eb;
     background: #fff;
@@ -45,3 +54,9 @@
     text-align: center;
   }
   
+
+  .acoes-header {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
