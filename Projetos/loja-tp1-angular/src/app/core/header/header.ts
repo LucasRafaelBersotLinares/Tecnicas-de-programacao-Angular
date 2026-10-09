@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, input, output } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import { RouterLink } from "@angular/router";
+import { CarrinhoService } from '../../features/carrinho/services/carrinho.service';
 
 @Component({
   selector: 'app-header',
@@ -10,6 +11,9 @@ import { RouterLink } from "@angular/router";
 })
 export class Header {
   tituloLoja= input.required<string>();
+  private carrinho = inject(CarrinhoService)
+
+  qtdCarrinho = this.carrinho.qtdItens;
 
   exibirMsg(msg:string): void {
     alert(msg);
